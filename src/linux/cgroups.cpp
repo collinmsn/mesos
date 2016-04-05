@@ -417,11 +417,6 @@ Try<string> prepare(
     return Error("No cgroups support detected in this kernel");
   }
 
-  // Ensure we have root permissions.
-  if (geteuid() != 0) {
-    return Error("Using cgroups requires root permissions");
-  }
-
   // Check if the specified subsystem has already been attached to
   // some hierarchy. If not, create and mount the hierarchy according
   // to the given baseHierarchy and subsystem.

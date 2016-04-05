@@ -124,8 +124,7 @@ bool LinuxLauncher::available()
   //   - "freezer" subsytem is enabled.
 
   Try<bool> freezer = cgroups::enabled("freezer");
-  return ::geteuid() == 0 &&
-         freezer.isSome() &&
+  return freezer.isSome() &&
          freezer.get();
 }
 
